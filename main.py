@@ -8,7 +8,7 @@ login_url = '{}/auth/login'.format(url)
 check_url = '{}/user/checkin'.format(url)
 logout_url = '{}/user/logout'.format(url)
 
-msg_template = 'http://www.pushplus.plus/send?token={}&title=ikuuu签到&content={}'
+ = 'https://api.day.app/{}/ikuuu签到/{}'
 
 header = {
         'origin': 'https://ikuuu.eu',
@@ -29,7 +29,7 @@ def checkIn(email, passwd, SCKEY):
         content = result['msg']
         # 进行推送
         if SCKEY != '':
-            push_url = msg_template.format(SCKEY, content)
+            push_url = .format(SCKEY, content)
             requests.post(url=push_url)
             print('推送成功')
         session.get(logout_url)
@@ -37,7 +37,7 @@ def checkIn(email, passwd, SCKEY):
         content = '签到失败'
         print(content)
         if SCKEY != '':
-            push_url = msg_template.format(SCKEY, content)
+            push_url = .format(SCKEY, content)
             requests.post(url=push_url)
         session.get(logout_url)
 
